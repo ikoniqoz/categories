@@ -13,9 +13,6 @@
 class Images extends Admin_Controller
 {
 	/*
-	 * Images does not have an admin view (only product tab admin view)
-	 * So we dont really need the section property
-	 *
 	 * @var string
 	 */
 	//protected $section = 'products';
@@ -61,10 +58,8 @@ class Images extends Admin_Controller
 		if( ! $exists )
 		{
 
-			//
 			// Get the first available file folder that suits our needs
 			// This most likly will be a previously setup folder
-			//
 			if( $this->categories_images_m->get_available_file_folders() )
 			{
 				$folder_id_a = $this->categories_images_m->get_available_file_folders();
@@ -93,7 +88,6 @@ class Images extends Admin_Controller
 
 
 	    	// Assign the image to this product
-	    	//
 	    	// Add/update the category row with te file id
 			$this->categories_admin_m->assign_image($category_id,$file_id);
 
@@ -105,8 +99,6 @@ class Images extends Admin_Controller
 						)
 					);die;
 		}
-
-
 	}
 
 

@@ -32,7 +32,7 @@ class Widget_Shop_categories extends Widgets
 	public $description = array(
 		'en' => 'Display a list of categories in your shop',
 	);
-	public $author = 'Inspired Group';
+	public $author = 'Salvatore Bordonaro';
 	public $website = 'http://inspiredgroup.com.au/';
 	public $version = '1.1';
 	public $fields = array(

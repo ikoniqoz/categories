@@ -37,7 +37,6 @@ class Categories_images_m extends MY_Model {
 
 
 		return $this->db->insert('file_folders',$to_insert); //returns id
-
 	}
 
 

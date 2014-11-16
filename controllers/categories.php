@@ -36,9 +36,7 @@ class Categories extends Public_Controller
         	->title(Settings::get('shop_name'))
 			->set_breadcrumb('Home', '/')
 			->set_breadcrumb('Shop', '/shop');
-
 	}
-
 
 
 	/**
@@ -139,7 +137,6 @@ class Categories extends Public_Controller
 			->set('view_title',$category->name)		
 			->build('shop_categories/category_products_list',$data );
 			//->build('shop/common/products_list',$data );
-
 	}
 
 	/**

@@ -33,7 +33,6 @@ class Categories_m extends MY_Model
 		}
 
 		return $categories;
-
 	}
 
 
@@ -92,7 +91,6 @@ class Categories_m extends MY_Model
 		}
 
 		return $return_array;
-
 	}
 
 	public function get_ancestors( $category_id = 0 , &$parentcategory =null )
@@ -114,7 +112,6 @@ class Categories_m extends MY_Model
 		}
 
 		return $parentcategory;
-
 	}
 
 

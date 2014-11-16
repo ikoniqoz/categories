@@ -33,14 +33,9 @@ class Categories extends Admin_Controller
 		$this->load->library('form_validation');
 
         $this->template
-                    //->append_js('shop::admin/admin.js')
                     ->append_js('shop::admin/plugins/buttons.js')
-                    //->append_js('shop::admin/util.js')
                     ->append_css('shop::admin/admin.css')
-                    //->append_css('shop::admin/stags.css')
                     ->append_css('shop::admin/tables.css')
-                    //->append_css('shop::admin/lists.css')
-                    //->append_css('shop::admin/pagination.css')
                     ->append_css('shop::admin/deprecated.css')
                     ->append_css('shop::admin/buttons/buttons.css')
                     ->append_css('shop::admin/buttons/font-awesome.min.css');
@@ -55,8 +50,7 @@ class Categories extends Admin_Controller
 		role_or_die('shop_categories', 'admin_categories');
 
 		// Build the view with shop/views/admin/clearances.php
-		$this->data->categories = $this->categories_admin_m->get_all_parents(); //get_all();
-		//$this->data->categories = $this->categories_m->get_all(); //get_all();
+		$this->data->categories = $this->categories_admin_m->get_all_parents(); 
 
 		$this->template
 				->title($this->module_details['name'])
@@ -83,14 +77,14 @@ class Categories extends Admin_Controller
 		// if postback-validate
 		if ($this->form_validation->run())
 		{
-			//Get all the POST
+
 			$input = $this->input->post();
 
 			//Create a new category and retrieve the ID
 			$id = $this->categories_admin_m->create($input);
 
 			//Inform the system that we have a new category
-			Events::trigger('evt_category_created', $id );
+			Events::trigger('SHOPEVT_CategoryCreated', $id );
 
 			//Session message
 			$this->session->set_flashdata('success', lang('shop_categories:create_success'));
@@ -153,7 +147,7 @@ class Categories extends Admin_Controller
 		// Check if exist
 		if (!$row)
 		{
-			$this->session->set_flashdata('error', 'Category not found!');
+			$this->session->set_flashdata(JSONStatus::Error, 'Category not found!');
 			redirect('admin/shop_categories/categories');
 		}
 
@@ -167,10 +161,8 @@ class Categories extends Admin_Controller
 			$input = $this->input->post();
 			$this->categories_admin_m->edit($id,$input);
 
-			//now that the basic data is saved lets assign image
-			//$this->upload_image($id);
 
-			Events::trigger('evt_category_changed', $id );
+			Events::trigger('SHOPEVT_CategoryChanged', $id );
 
 			$this->session->set_flashdata('success', lang('shop_categories:update_success'));
 
@@ -216,7 +208,7 @@ class Categories extends Admin_Controller
 
 			if($new_id)
 			{
-				Events::trigger('evt_category_created', $new_id );
+				Events::trigger('SHOPEVT_CategoryCreated', $new_id );
 
 				echo json_encode(array('status'=>'success','id'=>$new_id ,'product_id'=>$product_id));exit;
 			}
@@ -261,6 +253,7 @@ class Categories extends Admin_Controller
 
 		}
 	}
+
 	/**
 	 * Assign an image to a category
 	 *
@@ -303,7 +296,7 @@ class Categories extends Admin_Controller
 
 		if($this->categories_admin_m->delete($id))
 		{
-			Events::trigger('evt_category_deleted', $id );
+			Events::trigger('SHOPEVT_CategoryDeleted', $id );
 
 			if($this->input->is_ajax_request())
 			{
@@ -322,7 +315,6 @@ class Categories extends Admin_Controller
 			redirect('admin/shop_categories/categories/edit/'.$ret_cat);
 		else
 			redirect('admin/shop_categories/categories');
-
 	}
 
 	private function _deleteMany()
@@ -422,7 +414,6 @@ class Categories extends Admin_Controller
 
 	public function link($product_id,$category_id)
 	{
-		//allow access
 
 		//take params and create, if fail, thats ok shouldmean its already done
 		$this->load->model('shop_categories/categories_products_m');

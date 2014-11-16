@@ -14,18 +14,16 @@ class Module_Shop_Categories extends Module
 {
 
 	/**
-	 * New dev version uses YMD as the final decimal format.
-	 * Only for dev builds
 	 *
 	 * @var string
 	 */
-	public $version = '2.2.1';
+	public $version = '2.2.5';
 
 	public $mod_details = array(
-			      'name'=> 'Categories', //Label of the module
+			      'name'=> 'Categories', 
 			      'namespace'=>'shop_categories',
-			      'product-tab'=> TRUE, //This is to tell the core that we want a tab
-			      'prod_tab_order'=> 4, //This is to tell the core that we want a tab
+			      'product-tab'=> TRUE, 
+			      'prod_tab_order'=> 4, 
 			      'cart'=> FALSE,
 			      'has_admin'=> TRUE,
 			      'routes'=>
@@ -124,7 +122,6 @@ class Module_Shop_Categories extends Module
 		);
 
 		return $info;
-
 	}
 
 
@@ -180,7 +177,6 @@ class Module_Shop_Categories extends Module
 		}
 
 		return FALSE;
-
 	}
 
 
@@ -206,7 +202,6 @@ class Module_Shop_Categories extends Module
 		Events::trigger("SHOPEVT_DeRegisterModule", $this->mod_details);
 
 		return TRUE;
-
 	}
 
 
@@ -224,12 +219,9 @@ class Module_Shop_Categories extends Module
 				break;
 			default:
 				break;
-
 		}
 
-
 		return TRUE;
-
 	}
 
 
@@ -276,7 +268,6 @@ class Module_Shop_Categories extends Module
 		}
 
 		return TRUE;
-
 	}
 
 	public function isRequiredInstalled()

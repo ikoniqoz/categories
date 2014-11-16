@@ -74,7 +74,6 @@ class Categories_admin_m extends MY_Model
 		}
 
 		return $categories;
-
 	}
 
 
@@ -113,7 +112,6 @@ class Categories_admin_m extends MY_Model
 		$id = $this->insert($to_insert);
 
 		return $id;
-
 	}
 
 
@@ -152,7 +150,6 @@ class Categories_admin_m extends MY_Model
 		$to_insert['updated'] 		= date("Y-m-d H:i:s");
 
 		return $this->insert($to_insert);
-
 	}
 
 	private function getNewSlug($inSlug='', $igNor = -1)
@@ -165,7 +162,6 @@ class Categories_admin_m extends MY_Model
 
 		return $slug.$suffix;
 	}
-
 
     public function delete($id)
     {
@@ -190,11 +186,11 @@ class Categories_admin_m extends MY_Model
     }
 
 
-
 	public function hide($id)
 	{
 		return $this->toggle_visibility($id, 0);
 	}
+
 	public function show($id)
 	{
 		return $this->toggle_visibility($id, 1);
@@ -226,9 +222,6 @@ class Categories_admin_m extends MY_Model
 		return $this->update($id, $to_update);
 	}
 
-
-
-
 	public function assign_image($category_id,$file_id)
 	{
 		// Prepare
@@ -238,6 +231,7 @@ class Categories_admin_m extends MY_Model
 		);
 		return $this->update($category_id, $to_update);
 	}
+
 	public function clear_image($category_id)
 	{
 		// Prepare
@@ -247,7 +241,6 @@ class Categories_admin_m extends MY_Model
 		);
 		return $this->update($category_id, $to_update);
 	}
-
 
 
 
@@ -277,7 +270,6 @@ class Categories_admin_m extends MY_Model
 	}
 
 
-
 	//return the tree from the parents id
 	//this works by flattening the categories tree.
 	//It does not simply just get all categories, it gets all categories by  aparent, then flatens
@@ -294,7 +286,6 @@ class Categories_admin_m extends MY_Model
 		}
 
 		return $return_array;
-
 	}
 
 
@@ -329,7 +320,6 @@ class Categories_admin_m extends MY_Model
 		}
 
 		return $parentcategory;
-
 	}
 
 }

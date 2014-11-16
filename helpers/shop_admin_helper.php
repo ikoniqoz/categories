@@ -41,6 +41,7 @@ if (!function_exists('category_get'))
 		return $cat;
 	}
 }
+
 if (!function_exists('HelperGet_category_has_parent'))
 {
 
@@ -71,6 +72,7 @@ if (!function_exists('CategoryHelper_get_top_most'))
 
 	}
 }
+
 if (!function_exists('CategoryHelper_category_image'))
 {
 
@@ -86,8 +88,3 @@ if (!function_exists('CategoryHelper_category_image'))
 
 	}
 }
-
-
-
-
-
